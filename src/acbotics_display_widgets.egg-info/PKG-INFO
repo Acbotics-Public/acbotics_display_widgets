@@ -1,0 +1,8 @@
+Metadata-Version: 2.2
+Name: acbotics_display_widgets
+Version: 0.0.1
+Requires-Dist: scipy
+Requires-Dist: numpy
+Requires-Dist: matplotlib
+Requires-Dist: gps
+Requires-Dist: pyqtgraph

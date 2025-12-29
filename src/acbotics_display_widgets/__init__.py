@@ -1,0 +1,2 @@
+import acbotics_display_widgets.spectrogram_tab
+import acbotics_display_widgets.spectrogram_view

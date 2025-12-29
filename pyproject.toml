@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "acbotics_display_widgets"
+version = "0.0.1"
+dependencies = [
+	"scipy",
+	"numpy",
+	"matplotlib",
+	"gps",
+	# "geotiff",
+	# "imagecodecs",
+	# "PySide2",
+	"pyqtgraph",
+	# "acbotics_interface",
+]
+
+#[project.scripts]
+#run-acsense-dashboard = "acsense_display.acsense_dashboard:acsense_dashboard"
+# run-acsense-logger = "acsense_display.scripts.acsense_logger:acsense_logger"

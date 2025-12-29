@@ -1,0 +1,16 @@
+README.md
+pyproject.toml
+src/acbotics_display_widgets/__init__.py
+src/acbotics_display_widgets/logger_tab.py
+src/acbotics_display_widgets/pressure_time_view.py
+src/acbotics_display_widgets/sensor_list_tab.py
+src/acbotics_display_widgets/sensor_series_tab.py
+src/acbotics_display_widgets/sensor_time_series_view.py
+src/acbotics_display_widgets/spectrogram_tab.py
+src/acbotics_display_widgets/spectrogram_view.py
+src/acbotics_display_widgets/time_series_tab.py
+src/acbotics_display_widgets.egg-info/PKG-INFO
+src/acbotics_display_widgets.egg-info/SOURCES.txt
+src/acbotics_display_widgets.egg-info/dependency_links.txt
+src/acbotics_display_widgets.egg-info/requires.txt
+src/acbotics_display_widgets.egg-info/top_level.txt
