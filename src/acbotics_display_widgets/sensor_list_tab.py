@@ -32,7 +32,9 @@ class Sensor_List_Tab(qtw.QFrame):
 
         scroll1 = qtw.QScrollArea()
         # scroll1.setVerticalScrollBarPolicy(pg.QtCore.Qt.ScrollBarAlwaysOn)
-        scroll1.setHorizontalScrollBarPolicy(pg.QtCore.Qt.ScrollBarAlwaysOff)
+        scroll1.setHorizontalScrollBarPolicy(
+            pg.QtCore.Qt.ScrollBarPolicy.ScrollBarAlwaysOff
+        )
 
         col1 = qtw.QWidget()
         col1.layout = qtw.QVBoxLayout()
@@ -306,7 +308,7 @@ class Sensor_List_Tab(qtw.QFrame):
             )
 
         latest_rtc = self.fixture.get_rtc()
-        if "rtc_time" in latest_bnr:
+        if "rtc_time" in latest_rtc:
             time_rtc = utcfromtimestamp(latest_rtc["rtc_time"])
             self.labels_other["rtc_date"].setText(time_rtc.strftime("%Y-%m-%d"))
             self.labels_other["rtc_time"].setText(time_rtc.strftime("%H:%M:%S"))

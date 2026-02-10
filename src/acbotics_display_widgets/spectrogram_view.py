@@ -39,13 +39,13 @@ class Spectrogram_View(qtw.QFrame):
         self.setTransform(xform)  # assign transform
 
         self.img_gram.setImage(
-            np.array(self.fixture.data_fft).T,
+            np.array(self.fixture.get_fft_data()).T,
             # np.array(Sxx),
             autoLevels=False,
         )  # disable autolevels so colorbar retains control
         self.img_gram.setPos(
             0,
-            -len(self.fixture.data_fft)
+            -len(self.fixture.get_fft_data())
             * (self.fixture.NFFT - self.fixture.noverlap)
             / self.sample_rate,
         )

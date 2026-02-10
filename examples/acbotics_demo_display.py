@@ -132,7 +132,7 @@ class MainWindow(qtw.QMainWindow):
         # time_w.layout.addStretch()
         time_w.setLayout(time_w.layout)
 
-        mw_w.layout.addWidget(time_w, 0, 0, pg.QtCore.Qt.AlignTop)
+        mw_w.layout.addWidget(time_w, 0, 0, pg.QtCore.Qt.AlignmentFlag.AlignTop)
         mw_w.layout.addWidget(self.tab_widget, 0, 0)
         mw_w.setLayout(mw_w.layout)
 
