@@ -12,13 +12,14 @@ class Time_Series_Tab(qtw.QFrame):
         tup = colors.to_rgb(name)
         return tuple([int(x * 255) for x in tup])
 
-    def __init__(self, fixture, update_div=8):
+    def __init__(self, fixture, update_div=8, include_pressure_time_view=True):
         super(Time_Series_Tab, self).__init__()
         self.fixture = fixture
         self.processing = False
         self.update_div = update_div
         self.last_update_count = 0
         self.current_ch = self.fixture.current_ch
+        self.include_pressure_time_view = include_pressure_time_view
         # Create time-series tab
         # ======================
         self.layout = qtw.QHBoxLayout()
@@ -62,7 +63,8 @@ class Time_Series_Tab(qtw.QFrame):
         # col1.layout.addWidget(self.plot_gram)
         col1.setLayout(col1.layout)
 
-        self.pressure_view = Pressure_Time_View(self.fixture)
+        if self.include_pressure_time_view:
+            self.pressure_view = Pressure_Time_View(self.fixture)
 
         label2 = qtw.QLabel()
         label2.setText("Controls")
@@ -82,7 +84,8 @@ class Time_Series_Tab(qtw.QFrame):
         ctrl1.activated.connect(self.set_curr_ch)
         self.ch_controls.append(ctrl1)
 
-        col2.layout.addWidget(self.pressure_view)
+        if include_pressure_time_view:
+            col2.layout.addWidget(self.pressure_view)
         col2.layout.addItem(qtw.QSpacerItem(1, 30))
         col2.layout.addWidget(label2)
         col2.layout.addWidget(line1)
@@ -111,7 +114,8 @@ class Time_Series_Tab(qtw.QFrame):
         #     print("Failed to change channe to %d" % (index))
 
     def update(self):
-        self.pressure_view.update()
+        if self.include_pressure_time_view:
+            self.pressure_view.update()
 
         if self.processing:
             return
