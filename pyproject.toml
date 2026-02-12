@@ -10,6 +10,7 @@ dependencies = [
 	"numpy",
 	"matplotlib",
 	"gps",
+	"PySide6"
 	# "geotiff",
 	# "imagecodecs",
 	# "PySide2",
