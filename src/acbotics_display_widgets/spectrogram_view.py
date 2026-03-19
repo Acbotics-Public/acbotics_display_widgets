@@ -103,7 +103,7 @@ class Spectrogram_View(qtw.QFrame):
         self.layout.addWidget(self.plot_gram)
         self.setLayout(self.layout)
 
-    def update(self):
+    def refresh(self):
         # if not self.sample_rate == self.fixture.sample_rate:
         #     self.sample_rate = self.fixture.sample_rate
         #     self.update_sample_rate()

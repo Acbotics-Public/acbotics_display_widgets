@@ -12,9 +12,11 @@ class Sensor_Series_Tab(qtw.QFrame):
         tup = colors.to_rgb(name)
         return tuple([int(x * 255) for x in tup])
 
-    def __init__(self, fixture):
+    def __init__(self, fixture, use_pressure_time=True, use_timestamps=True):
         super(Sensor_Series_Tab, self).__init__()
         self.fixture = fixture
+        self.use_pressure_time = use_pressure_time
+        self.use_timestamps = use_timestamps
         # Create spectrogram tab
         # ======================
         self.layout = qtw.QHBoxLayout()
@@ -25,19 +27,21 @@ class Sensor_Series_Tab(qtw.QFrame):
         col3 = qtw.QWidget()
         col3.layout = qtw.QVBoxLayout()
 
-        self.sensor_view = Sensor_Time_Series_View(self.fixture)
+        self.sensor_view = Sensor_Time_Series_View(self.fixture, self.use_timestamps)
         self.sensor_view.create_widget()
 
         col1.layout.addWidget(self.sensor_view)
         col1.setLayout(col1.layout)
         self.date_labels = []
         self.time_labels = []
-        self.pressure_labels = []
-        self.temp_labels = []
 
-        self.pressure_view = Pressure_Time_View(self.fixture)
+        if self.use_pressure_time:
+            self.pressure_labels = []
+            self.temp_labels = []
 
-        col3.layout.addWidget(self.pressure_view)
+            self.pressure_view = Pressure_Time_View(self.fixture)
+
+            col3.layout.addWidget(self.pressure_view)
 
         col3.layout.addItem(qtw.QSpacerItem(1, 30))
         col3.layout.addStretch()
@@ -53,6 +57,7 @@ class Sensor_Series_Tab(qtw.QFrame):
     def gamepad_callbacks(self, event_info):
         return False
 
-    def update(self):
-        self.sensor_view.update()
-        self.pressure_view.update()
+    def refresh(self):
+        self.sensor_view.refresh()
+        if self.use_pressure_time:
+            self.pressure_view.refresh()

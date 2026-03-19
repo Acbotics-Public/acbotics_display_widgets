@@ -206,7 +206,7 @@ class Sensor_List_Tab(qtw.QFrame):
 
         self.setLayout(self.layout)
 
-    def update(self):
+    def refresh(self):
         latest_imu = self.fixture.get_imu()
         if "accel_x" in latest_imu:
             self.labels_other["imu_accel_x"].setText(
@@ -320,7 +320,7 @@ class Sensor_List_Tab(qtw.QFrame):
 
         self.ip_address_label.setText(ip_str)
 
-        self.pressure_view.update()
+        self.pressure_view.refresh()
 
     def ip4_addresses(self):
         ip_list = []

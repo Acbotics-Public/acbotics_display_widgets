@@ -10,9 +10,10 @@ class Sensor_Time_Series_View(qtw.QFrame):
         tup = colors.to_rgb(name)
         return tuple([int(x * 255) for x in tup])
 
-    def __init__(self, fixture):
+    def __init__(self, fixture, use_timestamps=True):
         super(Sensor_Time_Series_View, self).__init__()
         self.fixture = fixture
+        self.use_timestamps = use_timestamps
         self.layout = qtw.QHBoxLayout()
         plot_lines = pg.PlotWidget()
         # plot_lines.plotItem.plot([1, 2, 3, 4], [3, 2, 3, 1])
@@ -101,7 +102,7 @@ class Sensor_Time_Series_View(qtw.QFrame):
         signal = self.ctrl_signals.currentText()
         self.active_signal = signal
 
-    def update(self):
+    def refresh(self):
 
         if (
             self.active_sensor in self.fixture.get_sensor_names()
@@ -111,7 +112,10 @@ class Sensor_Time_Series_View(qtw.QFrame):
             data_raw = self.fixture.get_signal_buffer(
                 self.active_sensor, self.active_signal
             )
-            times = data_raw[0]
+            if self.use_timestamps:
+                times = data_raw[0]
+            else:
+                times = np.arange(len(data_raw[1]))
             trace = data_raw[1]
             if times is not None:
                 self.raw_data_curve.setData(

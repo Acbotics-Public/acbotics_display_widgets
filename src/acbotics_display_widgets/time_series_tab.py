@@ -113,9 +113,9 @@ class Time_Series_Tab(qtw.QFrame):
         # else:
         #     print("Failed to change channe to %d" % (index))
 
-    def update(self):
+    def refresh(self):
         if self.include_pressure_time_view:
-            self.pressure_view.update()
+            self.pressure_view.refresh()
 
         if self.processing:
             return
