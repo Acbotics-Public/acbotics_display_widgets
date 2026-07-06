@@ -110,8 +110,8 @@ class Logger_Tab(qtw.QFrame):
             self.all_loggers_disply.setText("Disabled")
         self.fixture.switch_logging_all(val)
 
-    def update(self):
-        self.pressure_view.update()
+    def refresh(self):
+        self.pressure_view.refresh()
 
         logger_paths = self.fixture.get_logger_paths()
         status_string = "Logger status: \r\n"

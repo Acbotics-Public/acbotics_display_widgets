@@ -132,7 +132,7 @@ class MainWindow(qtw.QMainWindow):
         # time_w.layout.addStretch()
         time_w.setLayout(time_w.layout)
 
-        mw_w.layout.addWidget(time_w, 0, 0, pg.QtCore.Qt.AlignTop)
+        mw_w.layout.addWidget(time_w, 0, 0, pg.QtCore.Qt.AlignmentFlag.AlignTop)
         mw_w.layout.addWidget(self.tab_widget, 0, 0)
         mw_w.setLayout(mw_w.layout)
 
@@ -380,7 +380,7 @@ class MainWindow(qtw.QMainWindow):
         change = self.fixture.set_current_channel(index)
         self.current_ch = self.fixture.current_ch
 
-    def update(self):
+    def refresh(self):
         while self.increment_channel_flag > 0:
             self.increment_channel_flag -= 1
             self.increment_current_channel()
@@ -407,7 +407,7 @@ class MainWindow(qtw.QMainWindow):
         #         )
         #         self.temp_labels[ii].setText(f"{self.fixture.pts.temperature_c:.2f} C")
 
-        self.tabs.currentWidget().update()
+        self.tabs.currentWidget().refresh()
         time_now = datetime.datetime.now()
         self.label_date.setText(time_now.strftime("%Y-%m-%d"))
         self.label_time.setText(time_now.strftime("%H:%M:%S"))
@@ -499,7 +499,7 @@ def acbotics_demo_display():
 
     logger.info("Starting up Qt Timer...")
     timer = pg.QtCore.QTimer()
-    timer.timeout.connect(mw.update)
+    timer.timeout.connect(mw.refresh)
     timer.start(int(1 / 20 * 1e3))
 
     logger.info("Launching App...")

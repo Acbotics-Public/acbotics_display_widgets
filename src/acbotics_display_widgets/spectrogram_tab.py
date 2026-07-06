@@ -103,8 +103,8 @@ class Spectrogram_Tab(qtw.QFrame):
             self.spectrogram_view.spectrogram_width_callback(event_info["state"])
             return True
 
-    def update(self):
-        self.spectrogram_view.update()
+    def refresh(self):
+        self.spectrogram_view.refresh()
 
         if not self.current_ch == self.fixture.current_ch:
             self.current_ch = self.fixture.current_ch
@@ -117,4 +117,4 @@ class Spectrogram_Tab(qtw.QFrame):
                 it.setCurrentIndex(self.current_ch)
                 it.activated.connect(self.set_curr_ch)
 
-        self.pressure_view.update()
+        self.pressure_view.refresh()

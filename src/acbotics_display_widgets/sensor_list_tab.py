@@ -32,7 +32,9 @@ class Sensor_List_Tab(qtw.QFrame):
 
         scroll1 = qtw.QScrollArea()
         # scroll1.setVerticalScrollBarPolicy(pg.QtCore.Qt.ScrollBarAlwaysOn)
-        scroll1.setHorizontalScrollBarPolicy(pg.QtCore.Qt.ScrollBarAlwaysOff)
+        scroll1.setHorizontalScrollBarPolicy(
+            pg.QtCore.Qt.ScrollBarPolicy.ScrollBarAlwaysOff
+        )
 
         col1 = qtw.QWidget()
         col1.layout = qtw.QVBoxLayout()
@@ -204,7 +206,7 @@ class Sensor_List_Tab(qtw.QFrame):
 
         self.setLayout(self.layout)
 
-    def update(self):
+    def refresh(self):
         latest_imu = self.fixture.get_imu()
         if "accel_x" in latest_imu:
             self.labels_other["imu_accel_x"].setText(
@@ -306,7 +308,7 @@ class Sensor_List_Tab(qtw.QFrame):
             )
 
         latest_rtc = self.fixture.get_rtc()
-        if "rtc_time" in latest_bnr:
+        if "rtc_time" in latest_rtc:
             time_rtc = utcfromtimestamp(latest_rtc["rtc_time"])
             self.labels_other["rtc_date"].setText(time_rtc.strftime("%Y-%m-%d"))
             self.labels_other["rtc_time"].setText(time_rtc.strftime("%H:%M:%S"))
@@ -318,7 +320,7 @@ class Sensor_List_Tab(qtw.QFrame):
 
         self.ip_address_label.setText(ip_str)
 
-        self.pressure_view.update()
+        self.pressure_view.refresh()
 
     def ip4_addresses(self):
         ip_list = []

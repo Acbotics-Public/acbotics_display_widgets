@@ -45,7 +45,7 @@ class Pressure_Time_View(qtw.QFrame):
         self.layout.addStretch()
         self.setLayout(self.layout)
 
-    def update(self):
+    def refresh(self):
         latest_pts = self.fixture.get_pts()
         if "pressure_mbar" in latest_pts.keys():
             self.label_pressure.setText(f"{latest_pts['pressure_mbar']:.2f} mbar")
