@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "acbotics_display_widgets"
-version = "1.1.0"
+version = "1.1.1"
 dependencies = [
 	"scipy",
 	"numpy",
@@ -17,6 +17,6 @@ dependencies = [
 	# "acbotics_interface",
 ]
 
-#[project.scripts]
-#run-acsense-dashboard = "acsense_display.acsense_dashboard:acsense_dashboard"
+[project.scripts]
+run-acbotics-demo-display = "acbotics_display_widgets.scripts.acbotics_demo_display:acbotics_demo_display"
 # run-acsense-logger = "acsense_display.scripts.acsense_logger:acsense_logger"
